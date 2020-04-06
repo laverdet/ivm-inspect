@@ -19,7 +19,7 @@ export async function create(isolate: ivm.Isolate, context: ivm.Context) {
 		// Compile modules
 		async function() {
 			return new Map(await Promise.all(kFiles.map(async module => {
-				const src: string = require(`./nodejs/lib/${module}`);
+				const src: string = require(`../nodejs/lib/${module}`);
 				const ivmSrc = `(function(global,primordials,internalBinding,process,module,require){${src}})`;
 				const script = await isolate.compileScript(ivmSrc, { filename: `${module}.js` });
 				const reference = await script.run(context, { release: true, reference: true });

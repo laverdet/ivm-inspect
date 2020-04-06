@@ -1,9 +1,10 @@
 {
   "name": "ivm-inspect",
   "version": "1.0.0",
+  "main": "dist",
   "scripts": {
     "install": "node-gyp rebuild",
-    "prepublish": "tsc"
+    "prepare": "tsc"
   },
   "author": "https://github.com/laverdet",
   "repository": {

@@ -1,11 +1,15 @@
 {
 	"compilerOptions": {
 		"strict": true,
-		"skipLibCheck": true,
 		"strictFunctionTypes": false,
+		"skipLibCheck": true,
 
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
+
+		"allowJs": true,
+		"declaration": true,
+		"outDir": "dist",
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"target": "esnext",
