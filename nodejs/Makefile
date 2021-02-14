@@ -1,3 +1,5 @@
+# NOTE: Be sure to run this with NODE_SRC environment variable set
+
 # nodejs files we need
 SRCS := \
 	lib/internal/errors.js \

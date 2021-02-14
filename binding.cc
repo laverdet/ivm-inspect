@@ -23,7 +23,7 @@ void Set(v8::Local<v8::Object> target, const char* name, v8::Local<Type> value) 
 }
 
 //
-// `types
+// `types`
 #define IS_TYPE_FUNCTIONS(V) \
 	V(External) \
 	V(Date) \
@@ -49,7 +49,6 @@ void Set(v8::Local<v8::Object> target, const char* name, v8::Local<Type> value) 
 	V(DataView) \
 	V(SharedArrayBuffer) \
 	V(Proxy) \
-	V(WebAssemblyCompiledModule) \
 	V(ModuleNamespaceObject)
 
 #define V(Type) \
