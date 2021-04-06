@@ -30,10 +30,9 @@ export async function create(isolate: ivm.Isolate, context: ivm.Context) {
 		// Binding
 		async function() {
 			const moduleInstance: ivm.Reference<Binding> = await nativeModule.create(context);
-			const makeBinding = await moduleInstance.get('makeBinding');
-			const binding = await makeBinding.apply();
+			const makeBinding = await moduleInstance.get('makeBinding', { reference: true });
+			const binding = await makeBinding.apply(null, [], { result: { reference: true } });
 			moduleInstance.release();
-			makeBinding.release();
 			return binding;
 		}(),
 		// Make primordials holder
@@ -42,11 +41,11 @@ export async function create(isolate: ivm.Isolate, context: ivm.Context) {
 
 	// Run primordials.js
 	const { global } = context;
-	const primordials = primordialsHolder.result;
+	const primordials = primordialsHolder;
 	await modules.get(kPrimordials)!.apply(undefined, [ global.derefInto(), primordials.derefInto()	]);
 
 	// Continue with bootstrap
-	const { result } = await context.evalClosure(`
+	const result = await context.evalClosure(`
 		const process = {
 			versions: {},
 		};
@@ -76,8 +75,8 @@ export async function create(isolate: ivm.Isolate, context: ivm.Context) {
 
 	// Export functions
 	const [ formatWithOptions, inspect ] = await Promise.all([
-		util.get('formatWithOptions'),
-		util.get('inspect'),
+		util.get('formatWithOptions', { reference: true }),
+		util.get('inspect', { reference: true }),
 	]);
 
 	// Release remaining handles
