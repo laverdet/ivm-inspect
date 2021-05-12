@@ -2,6 +2,7 @@
 
 # nodejs files we need
 SRCS := \
+	lib/internal/bootstrap/loaders.js \
 	lib/internal/errors.js \
 	lib/internal/per_context/primordials.js \
 	lib/internal/util.js \
