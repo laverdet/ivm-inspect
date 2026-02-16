@@ -1,6 +1,6 @@
 {
   "name": "ivm-inspect",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "main": "dist",
   "scripts": {
     "install": "node-gyp rebuild",
@@ -22,9 +22,9 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "isolated-vm": "^5"
+    "isolated-vm": "^6"
   },
   "dependencies": {
-    "nan": "^2.20.0"
+    "nan": "^2.25.0"
   }
 }
