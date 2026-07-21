@@ -75,12 +75,19 @@ NAN_METHOD(IsBoxedPrimitive) {
 //
 // `util`
 NAN_METHOD(GetConstructorName) {
+	if (!info[0]->IsObject()) {
+		return Nan::ThrowTypeError("The \"object\" argument must be an object");
+	}
 	v8::Local<Object> object = info[0].As<Object>();
 	v8::Local<String> name = object->GetConstructorName();
 	info.GetReturnValue().Set(name);
 }
 
 NAN_METHOD(GetOwnNonIndexProperties) {
+	if (!info[0]->IsObject() || !info[1]->IsUint32()) {
+		return Nan::ThrowTypeError(
+			"getOwnNonIndexProperties expects (object, uint32 filter)");
+	}
 	Local<Context> context = Nan::GetCurrentContext();
 	Local<Object> object = info[0].As<Object>();
 	Local<Array> properties;
