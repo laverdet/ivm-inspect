@@ -9,7 +9,7 @@
 					'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
 					'GCC_GENERATE_DEBUGGING_SYMBOLS': 'YES',
 					'CLANG_CXX_LANGUAGE_STANDARD': 'c++20',
-					'MACOSX_DEPLOYMENT_TARGET': '10.9',
+					'MACOSX_DEPLOYMENT_TARGET': '11.0',
 				},
 				'msvs_settings': {
 					'VCCLCompilerTool': {
